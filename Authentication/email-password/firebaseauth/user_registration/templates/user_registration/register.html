@@ -1,0 +1,62 @@
+{% extends 'user_registration/layout.html' %}
+{% block content %}
+    <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+
+    <!-- Email address -->
+    <div class="form-floating">
+        {% if form.email.errors %}
+            {{ form.email(class="form-control is-invalid",placeholder="name@firebase.com") }}
+            <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            <label for="floatingInput">Email address</label>
+        {% else %}
+            {{ form.email(class="form-control",placeholder="name@firebase.com") }}
+            <label for="floatingInput">Email address</label>
+        {% endif %}
+    </div>
+
+    <!-- Password -->
+    <div class="form-floating">
+        {% if form.password.errors %}
+            {{ form.password(class="form-control is-invalid",placeholder="Password") }}
+            <div class="invalid-feedback">
+                 {% for error in form.password.errors %}
+                     <span>{{ error }}</span>
+                 {% endfor %}
+             </div>
+            <label for="floatingPassword">Password</label>
+        {% else %}
+            {{ form.password(class="form-control",placeholder="Password") }}
+            <label for="floatingPassword">Password</label>
+        {% endif %}
+    </div>
+
+    <!-- Confirm password -->
+    <div class="form-floating">
+        {% if form.confirm_password.errors %}
+            {{ form.confirm_password(class="form-control is-invalid",placeholder="Confirm Password") }}
+            <div class="invalid-feedback">
+                 {% for error in form.confirm_password.errors %}
+                     <span>{{ error }}</span>
+                 {% endfor %}
+             </div>
+            <label for="floatingPassword">Confirm Password</label>
+        {% else %}
+            {{ form.confirm_password(class="form-control",placeholder="Confirm Password") }}
+            <label for="floatingPassword">Confirm Password</label>
+        {% endif %}
+    </div>
+
+    <!--Sign up button-->
+    {{ form.submit(class="btn btn-primary btn-lg mb-2 w-100 mt-3")}}
+
+    <div class="border-top pt-2">
+        <small class="text-muted">
+            Already Have An Account? <a class="ps-1" href="{{url_for('user_login.login')}}">Sign in</a>
+        </small>
+    </div>
+    <p class="mt-5 mb-3 text-muted">&copy; 2022–2023</p>
+{% endblock content %}
